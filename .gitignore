@@ -27,6 +27,7 @@ Front/!.vscode/extensions.json
 # misc
 Front/.sass-cache
 Front/connect.lock
+Front/connect.locks
 Front/coverage
 Front/libpeerconnection.log
 Front/npm-debug.log
