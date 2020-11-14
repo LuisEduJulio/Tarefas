@@ -44,3 +44,5 @@ ApiTeste/obj
 ApiTeste/bin
 Api/obj
 Api/bin
+Api/.vs
+./Api/.vs
