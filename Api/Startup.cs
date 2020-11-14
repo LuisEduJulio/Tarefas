@@ -9,8 +9,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
-using System.IO;
-using System.Reflection;
 
 namespace Api
 {
@@ -26,6 +24,8 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(); 
+
             services.AddScoped<IService, Service>();
 
             services.AddDbContext<AppDbContext>(options => options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
@@ -79,6 +79,8 @@ namespace Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json",
                     "Api Assegnment");
             });
+
+            app.UseCors(opt => opt.AllowAnyOrigin());
 
             app.UseEndpoints(endpoints =>
             {
