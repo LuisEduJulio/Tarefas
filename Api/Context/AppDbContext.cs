@@ -12,6 +12,5 @@ namespace Api.Context
         }
         public DbSet<Assignment> Assignment { get; set; }
         public DbSet<Category> Category { get; set; }
-        
     }
 }
