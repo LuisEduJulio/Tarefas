@@ -3,12 +3,15 @@ using Api.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Cors;
 
 namespace Api.Controllers
 {
+    [ApiConventionType(typeof(DefaultApiConventions))]
+    [Produces("application/json")]
     [ApiController]
     [Route("api/[Controller]")]
-    //[EnableCors("PermitirApiRequest")]
+    [EnableCors("PermitirApiRequest")]
     public class AssignmentContoller : ControllerBase
     {
         private readonly IService _services; 

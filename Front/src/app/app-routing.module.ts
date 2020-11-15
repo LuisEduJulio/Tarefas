@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'adicionarCategoria', component: AddCategoryComponent, data: { title: 'AdicionarCategoria' } },
     { path: 'adicionarTarefa', component: AddAssignmentComponent, data: { title: 'AdicionarTarefa' } },
     { path: 'detalhe', component: DetailAssignmentComponent, data: { title: 'Detalhe' } },
-    { path: 'tarefas', component: AssignmentComponent, data: { title: 'Tarefas' } },
+    { path: 'tarefas', component: AssignmentComponent, data: { title: 'tarefas' } },
 ];
 
 @NgModule({

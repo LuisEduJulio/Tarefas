@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { catchError, tap, map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, tap } from 'rxjs/operators';
 import { Assignment } from '../model/Assignment';
 
-const apiUrl = 'https://localhost:5001/api​/AssignmentContoller';
-var httpOptions = {headers: new HttpHeaders({"Content-Type": "application/json"})};
+const apiUrl = 'https://localhost:5001/api/AssignmentContoller';
+var httpOptions = { headers: new HttpHeaders({ "Content-Type": "application/json" })};
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +14,19 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  
-  getAssignment(): Observable<Assignment[]> {
-    console.log(httpOptions.headers);
-    console.log(apiUrl)
-    console.log(Assignment)
-    return this.http.get<Assignment[]>(apiUrl, httpOptions)
-      .pipe(
-        tap(Assignment => console.log('leu as tarefas')),
-        catchError(this.handleError('getAssignment', []))
-      );
+
+  getAssignment (): Observable<Assignment[]> {
+    try {
+      console.log(httpOptions.headers);
+      const res = this.http.get<Assignment[]>(apiUrl, httpOptions)
+        .pipe(
+          tap(Assignment => console.log('leu as tarefas')),
+          catchError(this.handleError('getAssignment', []))
+        );
+      return res;
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   /*
@@ -58,7 +61,7 @@ export class ApiService {
     );
   }
 */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
       return of(result as T);

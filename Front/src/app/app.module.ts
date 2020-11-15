@@ -37,7 +37,6 @@ import { LayoutModule } from '@angular/cdk/layout';
     DetailAssignmentComponent,
     MenuComponent,
     AssignmentComponent,
-    AssignmentComponent,
   ],
   imports: [
     HttpClientModule,

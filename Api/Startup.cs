@@ -24,7 +24,13 @@ namespace Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(); 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("EnableCORS", builder =>
+                {
+                    builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                });
+            });
 
             services.AddScoped<IService, Service>();
 
@@ -46,7 +52,7 @@ namespace Api
                         Url = new Uri("https://www.linkedin.com/in/luiseduardojulio/"),
                     },
                 });
-               
+
             });
 
             services.AddControllers().AddNewtonsoftJson(options =>
@@ -80,7 +86,7 @@ namespace Api
                     "Api Assegnment");
             });
 
-            app.UseCors(opt => opt.AllowAnyOrigin());
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

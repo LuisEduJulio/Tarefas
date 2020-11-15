@@ -1,9 +1,9 @@
 export class Assignment{
-    AssignmentId: string;
+    AssignmentId: number;
     Title: string;
     Describe: string;
-    Finish: string;
+    Finish: boolean;
     Date: string;
-    Category: string;
-    CategoryId: string;
+    Category: [];
+    CategoryId: number;
 }
